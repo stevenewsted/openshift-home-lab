@@ -1,3 +1,5 @@
 [ocp]
-master0.pokitoach.com
-node0.pokitoach.com
+master1.home.lan
+node1.home.lan
+node2.home.lan
+jump.home.lan

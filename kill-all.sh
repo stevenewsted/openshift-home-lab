@@ -12,7 +12,7 @@ do
     xmlfile="$VMS/$i.xml"
     dockerdisk="$VMS/$i-docker.qcow2"
 
-    virsh shutdown $i
+    virsh destroy $i
     virsh undefine $i
     rm $baseimage $image $dockerdisk $xmlfile
 

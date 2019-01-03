@@ -13,12 +13,14 @@ debug_level=4
 ansible_ssh_user=root
 
 openshift_deployment_type=openshift-enterprise
-oreg_auth_user=<userid>
-oreg_auth_password=<password>
+oreg_auth_user=rhn-support-snewsted
+oreg_auth_password='>_d+*s.!Uak7X3+_'
+
+
 
 openshift_master_cluster_method=native
 
-openshift_master_default_subdomain=apps.hupiper.com
+openshift_master_default_subdomain=ocp.home.lan
 
 openshift_metrics_install_metrics=true
 openshift_metrics_hawkular_hostname=hawkular-metrics.{{openshift_master_default_subdomain}}
@@ -32,13 +34,14 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 
 # host group for masters
 [masters]
-master0.pokitoach.com
+master1.home.lan
 
 # host group for etcd
 [etcd]
-master0.pokitoach.com
+master1.home.lan
 
 # host group for nodes
 [nodes]
-master0.pokitoach.com openshift_node_group_name='node-config-master-infra'
-node0.pokitoach.com openshift_node_group_name='node-config-compute'
+master1.home.lan openshift_node_group_name='node-config-master-infra'
+node1.home.lan openshift_node_group_name='node-config-compute'
+node2.home.lan openshift_node_group_name='node-config-compute'
