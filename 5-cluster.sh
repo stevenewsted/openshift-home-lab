@@ -2,18 +2,21 @@
 
 source ./env.sh
 
-echo "copied sample configuration hosts.ocp, hosts and 3-keys.sh to the jumpstation"
+echo "copying sample configuration hosts.ocp, hosts and 3-keys.sh to the jumpstation"
+# TODO: this should be updated to use a real jump machine hostname, not assume 'jump' is valid
 scp hosts.ocp root@jump.$DOMAIN:~/
-scp hosts root@jump.$DOMAIN:~/
+scp hosts     root@jump.$DOMAIN:~/
 scp 3-keys.sh root@jump.$DOMAIN:~/
-echo "Do this:"
-echo "            $ ssh root@xjump.$DOMAIN"
-echo "            jump# ssh-keygen"
-echo "            jump# bash ./3-keys.sh"
-echo "            jump# ansible-playbook -i hosts.ocp /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml"
-echo "            jump# ansible-playbook -i hosts.ocp /usr/share/ansible/openshift-ansible/playbooks/deploy-cluster.yml"
-echo "		  jump# ssh root@master0.gwiki.org \"htpasswd -b /etc/origin/master/htpasswd marc SekretPassword\""
-echo "		  jump# oadm policy add-role-to-user system:registry marc (optional)"
+echo "Now go do these steps:"
+echo " hypervisor$ ssh root@jump.$DOMAIN"
+echo "       jump# ssh-keygen    # accept the defaults"
+echo "       jump# bash ./3-keys.sh"
+echo "       jump# ansible-playbook -i hosts.ocp /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml"
+echo "       jump# ansible-playbook -i hosts.ocp /usr/share/ansible/openshift-ansible/playbooks/deploy-cluster.yml"
+# TODO: master0 should be pulled from the list of masters in the envs/hosts/etc
+echo "       jump# ssh root@master0.gwiki.org \"htpasswd -b /etc/origin/master/htpasswd marc SekretPassword\"   # 'master0' here should be your first master node. 'marc' is your username, and the password should be something else."
+# uncomment this out when we fix why oadm isn't on the jump host:
+#echo "       jump# oadm policy add-role-to-user system:registry marc (optional)   # replace 'marc' with your username."
 exit
 ####
 # Below are random notes
