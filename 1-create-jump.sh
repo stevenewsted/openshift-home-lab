@@ -24,9 +24,14 @@ if [ ! -v INITIALPASSWD ]; then
 	exit 5
 fi
 
+HOSTSFILE=hosts.jump
+if [ ! -r "$HOSTSFILE" ]; then
+	echo "${HOSTSFILE} is missing."
+	exit 10
+fi
+
 # create the VM directory if it doesn't exist
-if [ ! -d "$VMS" ]
-then
+if [ ! -d "$VMS" ]; then
     echo "Creating ${VMS}"
     mkdir -p "$VMS"
 fi
@@ -54,7 +59,8 @@ fi
 # ensure that the permissions are correct for the new cluster key
 chmod 644 "$CLUSTERKEY"
 
-for i in `cat hosts.jump|grep -v \\\\[`;
+# a safer, cleaner loop over the hosts file to read in lines, rather than words
+grep -E '^[^\[ ]' < $HOSTSFILE | while IFS= read -r i
 do 
     echo "########################################################################"
     echo "[${i} start]"
