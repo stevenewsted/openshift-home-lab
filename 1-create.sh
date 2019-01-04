@@ -32,7 +32,7 @@ then
 fi
 
 # sanity checks around the ssh key stuff
-if [ ! -f "$CLUSTERKEY" ]; then # if the cluster sshkey doens't exist, try to copy it from the original key
+if [ ! -f "$CLUSTERKEY" ]; then # if the cluster sshkey doesn't exist, try to copy it from the original key
 	if [ ! -r "$ORIGINALKEY" ]; then # check to see if the original key exists and is readable
 		echo "${CLUSTERKEY} does not exist, and ${ORIGINALKEY} can't be found/read."
 		exit 6

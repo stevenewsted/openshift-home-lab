@@ -2,6 +2,7 @@
 
 source ./env.sh
 
+# verify a bunch of variables have contents, as a sanity check
 if [ ! -v VMS ]; then
 	echo "${VMS} is not defined. Please set this in env.sh and try again."
 	exit 1
@@ -30,6 +31,7 @@ then
     mkdir -p "$VMS"
 fi
 
+# sanity checks around the ssh key stuff
 if [ ! -f "$CLUSTERKEY" ]; then # if the cluster sshkey doesn't exist, try to copy it from the original key
 	if [ ! -r "$ORIGINALKEY" ]; then # check to see if the original key exists and is readable
 		echo "${CLUSTERKEY} does not exist, and ${ORIGINALKEY} can't be found/read."
@@ -59,13 +61,12 @@ do
 
     BASEIMAGE="${VMS}/${i}-base.qcow2"
     IMAGE="${VMS}/${i}.qcow2"
-    DOCKERDISK="${VMS}/$i-docker.qcow2"
-    GLUSTERFSDISK="${VMS}/$i-glusterfs.qcow2"
+    DOCKERDISK="${VMS}/${i}-docker.qcow2"
+    GLUSTERFSDISK="${VMS}/${i}-glusterfs.qcow2"
 
     echo "[Creating a ${VMROOTDISK} disk for root, ${IMAGE}]"
     qemu-img create -f qcow2 "$BASEIMAGE" "$VMROOTDISK"
     virt-resize --expand /dev/sda1 "$RHEL_IMAGE" "$BASEIMAGE"
-
     qemu-img create -f qcow2 -b "$BASEIMAGE" "$IMAGE"
 
     echo "[Customizing ${i} system]"
@@ -75,4 +76,3 @@ do
     virt-customize -a "$IMAGE" --hostname "$i"
     echo "[${i} done]"
 done
-

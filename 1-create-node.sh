@@ -2,6 +2,7 @@
 
 source ./env.sh
 
+# verify a bunch of variables have contents, as a sanity check
 if [ ! -v VMS ]; then
 	echo "${VMS} is not defined. Please set this in env.sh and try again."
 	exit 1
@@ -23,13 +24,15 @@ if [ ! -v INITIALPASSWD ]; then
 	exit 5
 fi
 
+# create the VM directory if it doesn't exist
 if [ ! -d "$VMS" ]
 then
     echo "Creating ${VMS}"
     mkdir -p "$VMS"
 fi
 
-if [ ! -f "$CLUSTERKEY" ]; then # if the cluster sshkey doens't exist, try to copy it from the original key
+# sanity checks around the ssh key stuff
+if [ ! -f "$CLUSTERKEY" ]; then # if the cluster sshkey doesn't exist, try to copy it from the original key
 	if [ ! -r "$ORIGINALKEY" ]; then # check to see if the original key exists and is readable
 		echo "${CLUSTERKEY} does not exist, and ${ORIGINALKEY} can't be found/read."
 		exit 6
@@ -38,7 +41,7 @@ if [ ! -f "$CLUSTERKEY" ]; then # if the cluster sshkey doens't exist, try to co
 	# if CLUSTERKEY doesn't exist, but the ORIGINALKEY does, copy it. 
 	cp "$ORIGINALKEY" "$CLUSTERKEY"
 	COPYRESULT=$?
-	if [ $COPYRESULT -ne 0 ]; then
+	if [ "$COPYRESULT" -ne 0 ]; then
 		echo "Error: Copying ${ORIGINALKEY} to create ${CLUSTERKEY} failed with: ${COPYRESULT}"
 		exit 7
 	fi
