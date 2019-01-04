@@ -4,3 +4,4 @@ typescript
 *.secret
 variables.yml
 vault.yml
+*.swp
