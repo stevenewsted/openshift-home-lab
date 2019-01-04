@@ -6,7 +6,7 @@ Thanks to mmagnani, ruchika, @hupiper, and @MarcNo for kickstarting the initial 
 ## What do you get
 
 * Three RHEL7.5 VMs running in KVM (1 master, 1 node, 1 jump). 
- * You can add more as desired as part of the initial installation, or after you get things up and running. 
+  * You can add more as desired as part of the initial installation, or after you get things up and running. 
 * Registered and appropriate subscriptions attached
 * required RPMs installed, including atomic-openshift-installer
 * docker installed and storage configured
@@ -18,7 +18,7 @@ Thanks to mmagnani, ruchika, @hupiper, and @MarcNo for kickstarting the initial 
 * Access to a DHCP server. (Anything that can provide static leases) 
 * RHEL 7 KVM hypervisor host (or compatible, like Fedora/CentOS)
 * `rhel-server-7.5-x86_64-kvm.qcow2` from:
- * From [Redhat download section](https://access.redhat.com/downloads/) > Red Hat Enterprise Linux > the KVM guest image
+  * From [Redhat download section](https://access.redhat.com/downloads/) > Red Hat Enterprise Linux > the KVM guest image
 * 1 free NIC on the host
 
 ** If you are looking at this the first time, and wondering what you need to know to get up and running, this is the place to start reading. **
