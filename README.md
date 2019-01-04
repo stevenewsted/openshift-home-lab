@@ -269,3 +269,37 @@ The easiest way to get started is to point a browser to
 https://ocp.$OCPDOMAIN:8443/.
 
 Good luck!
+
+
+
+# Random notes from the 5-cluster script:
+
+https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html/installation_and_configuration/installing-a-cluster#what-s-next-2
+
+Once the cluster is created, 
+
+ssh root@master0.$DOMAIN and do:
+
+   htpasswd -b /etc/origin/master/htpasswd marc SekretPassword
+   oadm policy add-role-to-user system:registry marc
+
+
+https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html/installation_and_configuration/setting-up-the-registry#install-config-registry-overview
+
+for non production use (may not have to do)
+
+$ sudo chown 1001:root <path>
+$ oadm registry --service-account=registry \
+    --config=/etc/origin/master/admin.kubeconfig \
+    --images='registry.access.redhat.com/openshift3/ose-${component}:${version}' \
+    --mount-host=<path>
+
+https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html/installation_and_configuration/setting-up-a-router#install-config-router-overview
+
+oadm policy add-cluster-role-to-user \
+    cluster-reader \
+    system:serviceaccount:default:router
+
+oadm router <router_name> --replicas=<number> --service-account=router
+
+https://master0.$DOMAIN:8443/
