@@ -21,9 +21,7 @@ Thanks to mmagnani, ruchika, @hupiper, and @MarcNo for kickstarting the initial 
   * From [Redhat download section](https://access.redhat.com/downloads/) > Red Hat Enterprise Linux > the KVM guest image
 * 1 free NIC on the host
 
-** If you are looking at this the first time, and wondering what you need to know to get up and running, this is the place to start reading. **
-
-These instructions assume you are installing a jump VM in addition to a master and node VMs. The install scripts for the jump are separate to allow you to skip the jump server if you choose to.
+**If you are looking at this the first time, and wondering what you need to know to get up and running, this is the place to start reading.**
 
 ### 1. Pull a local copy of the scripts
 
@@ -35,7 +33,7 @@ Create two working directories: one for ISOs (specifically the rhel kvm image), 
 mkdir ~/ocp/VMs
 mkdir ~/ISOs
 ```
-These can be anywhere, but the examples here correlate to the default configuration in the `envs.sh` configuration.
+These can be anywhere, but the examples here correlate to the default configuration in the `env.sh` configuration.
 
 ### 3. Edit hosts file
 
@@ -51,9 +49,11 @@ Edit the hosts.jump file to include the FQDN of your new jump host:
 [jump]
 jump.domain.com
 ```
+These instructions assume you are installing a jump VM in addition to a master and node VMs. The install scripts for the jump are separate to allow you to skip the jump server if you choose to.
+
 ### 4. Edit env.sh
 
-When you look at the env.sh file, you'll notice that the MAC addresses are already set up for your VMs. You need to take those MACs and add them to the 
+When you look at the `env.sh` file, you'll notice that the MAC addresses are already set up for your VMs. You need to take those MACs and add them to the 
 
   - DOMAIN - the domain name to use for the hosts (ie: domain.com)
   - MACADDRESS - MAC addresses for your VMs (be unique)
@@ -105,13 +105,13 @@ $ ssh-keygen -f /home/user/.ssh/id_rsa -t rsa -N ''
 $ cp ~/.ssh/id_rsa.pub ~/ocp/vm_id_rsa.pub
 ```
 ### 9. Check CPU model in 2-build.sh script
-1-create.sh creates the VMs for your nodes. 2-build.sh configures them to run in your KVM environment. The virt-install command in this file has a --cpu variable that is set to Skylake-client, which is the model of Intel CPU I am using in my server. To see what model CPU you are using, use the following command.
+1-create.sh creates the VMs for your nodes. 2-build.sh configures them to run in your KVM environment. The virt-install command in this file has a --cpu variable that is read from the `env.sh` configuration. To see what model CPU you are using, use the following command.
 ```
 $ virsh capabilities | grep -i model | head -n1
 ```
 It should output a single line of XML, showing the model, like:
 ```<model>Skylake-client</model>```
-Use the value in between the `model` tags in the env.sh configuration file. 
+Use the value in between the `model` tags in the `env.sh` configuration file. 
 
 ### 10. Set up Linux Bridging
 
@@ -192,7 +192,7 @@ Change these:
 `oreg_auth_user` to your Red Hat subscription name
 `oreg_auth_password` to the Red Hat subscription password
 
-Change `openshift_master_default_subdomain` to the OCPDOMAIN you specified in the env.sh file.
+Change `openshift_master_default_subdomain` to the OCPDOMAIN you specified in the `env.sh` file.
 
 ## Run on your hypervisor
 
