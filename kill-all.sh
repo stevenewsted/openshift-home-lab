@@ -3,23 +3,21 @@
 DESTROY=no
 
 usage() {
-        echo "$0:"
+        echo "Usage $0:"
         echo "-h for help"
+        echo "-k to destroy instead of shutdown"
         echo "-f <hosts file>"
-        exit 0
 }
 
-stop_hosts() {
-  if [ -z "$1" ]; then
+kill_hosts() {
+  if [ -z "$HOSTSFILE" ]; then
     # set the hosts file to 'hosts' if the user doesn't specify it with -f
     HOSTSFILE=hosts
-  else
-    HOSTSFILE=$1
   fi
 
   if [ ! -r "$HOSTSFILE" ]; then
-        echo "${HOSTSFILE} is missing."
-        exit 10
+    echo "$0: Error - ${HOSTSFILE} is missing."
+    exit 10
   fi
 
   # a safer, cleaner loop over the hosts file to read in lines, rather than words
@@ -55,13 +53,13 @@ case "${option}"
 in
 h) usage
    exit 0;;
-f) stop_hosts "$OPTARG" ;;
-k) DESTROY=yes;;
-?) echo "unexpected flag: '${OPTARG}'"
-   exit;;
+f) HOSTSFILE="$OPTARG" ;;
+k) DESTROY=yes ;;
+?) usage
+   exit 1;;
 esac
 done
 
-stop_hosts
+kill_hosts
 
 virsh list --all
