@@ -4,7 +4,6 @@ usage() {
 	echo "$0:"
 	echo "-h for help"
 	echo "-f <hosts file>"
-	exit 0
 }
 
 start_hosts() {
@@ -23,11 +22,10 @@ start_hosts() {
   # a safer, cleaner loop over the hosts file to read in lines, rather than words
   grep -E '^[^\[ ]' < "$HOSTSFILE" | while IFS= read -r i
   do 
-  	virsh start "$i"
-  	#sleep 5
+    virsh start "$i"
+    sleep 5
   done
 
-  echo "DEBUG: start_hosts end"
   exit 0
 }
 
@@ -38,8 +36,8 @@ in
 h) usage
    exit 0;;
 f) start_hosts "$OPTARG" ;;
-?) echo "unexpected flag: '${OPTARG}'"
-   exit;;
+?) usage
+   exit 1;;
 esac
 done
 
