@@ -60,7 +60,6 @@
        - sos
        - psacct
        - yum-utils
-       - openshift-ansible
        - docker
 
 
@@ -94,12 +93,6 @@
 #      yum: name={{ item }} state=present
 #      with_items:
 #       - emacs-nox 
-
-    - name: "Ansible and scripts to drive the openshift installation"
-      yum: name={{ item }} state=present
-      with_items:
-       - openshift-ansible
-       - ansible
 
     # - name: "Install Docker"
     #   yum:
