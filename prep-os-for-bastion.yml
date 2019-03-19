@@ -45,7 +45,7 @@
         name: '*'
         state: latest
 
-    - name: "Install required packages"
+    - name: "Ansible and scripts to drive the openshift installation plus other packages"
       yum: name={{ item }} state=present
       with_items:
        - wget
@@ -59,13 +59,6 @@
        - sos
        - psacct
        - yum-utils
-       - openshift-ansible
-       - docker
-
-
-    - name: "Ansible and scripts to drive the openshift installation"
-      yum: name={{ item }} state=present
-      with_items:
        - openshift-ansible
        - ansible
 
