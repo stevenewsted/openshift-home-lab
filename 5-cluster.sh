@@ -12,7 +12,7 @@ echo " hypervisor$ ssh root@jump.$DOMAIN"
 echo "       jump# ssh-keygen    # accept the defaults"
 echo "       jump# bash ./3-keys.sh"
 echo "       jump# ansible-playbook -i hosts.ocp /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml"
-echo "       jump# ansible-playbook -i hosts.ocp /usr/share/ansible/openshift-ansible/playbooks/deploy-cluster.yml"
+echo "       jump# ansible-playbook -i hosts.ocp /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml"
 # TODO: master node name could be pulled from the list of masters in the envs/hosts/etc
 echo "       jump# ssh root@<master node> \"htpasswd -b /etc/origin/master/htpasswd <user> <pass>\" " 
 # uncomment this out when we fix why oadm isn't on the jump host. Should this be run on the master instead of the jump?
