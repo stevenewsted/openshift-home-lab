@@ -17,6 +17,7 @@ oreg_auth_user=rhn-support-snewsted
 oreg_auth_password='>_d+*s.!Uak7X3+_'
 
 
+homelab_router_ip=192.168.5.123
 
 openshift_master_cluster_method=native
 
