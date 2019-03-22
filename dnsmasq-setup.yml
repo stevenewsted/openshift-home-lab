@@ -8,7 +8,8 @@
         src: 'dnsmasq-wildcard.conf.j2'
         dest: '/etc/dnsmasq.d/dnsmasq-wildcard.conf'
         mode: 644
-        state: present
+        owner: root
+        group: root
 
   handlers:
     - name: 'restart dnsmasq'
