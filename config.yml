@@ -1,0 +1,21 @@
+### All tasks are commented out, only uncomment necessary tasks to run. ###
+#
+### Syntax to run: ansible-playbook -i <inventory> config.yml
+
+# Copy required packages prior to deployment 
+# - include: prep-nodes.yml
+
+# Main Ansible playbook to deploy OpenShift
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
+
+# A la carte playbooks to reconfigure infrastructure and install additional components
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-etcd/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/additional_config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-hosted/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-web-console/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-node/bootstrap.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-monitoring/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml
+

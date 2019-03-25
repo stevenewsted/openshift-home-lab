@@ -1,0 +1,20 @@
+# Connect to nodes as root user.
+ansible_ssh_user: root
+
+# Set deployment type to deploy enterprise as opposed to origin or a stand-alone registry
+openshift_deployment_type: openshift-enterprise
+
+# Disable memory check for small home labs
+openshift_disable_check: memory_availability
+
+# Install OpenShift templates and service catalog by default
+openshift_install_examples: true
+openshift_enable_service_catalog: true
+
+# Install metrics
+openshift_metrics_install_metrics: true
+openshift_metrics_hawkular_hostname: 'hawkular-metrics.{{ openshift_master_default_subdomain }}'
+
+# Install logging
+openshift_logging_install_logging: true
+openshift_logging_es_nodeselector: 'node-role.kubernetes.io/infra=true'
