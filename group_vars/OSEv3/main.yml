@@ -7,14 +7,30 @@ openshift_deployment_type: openshift-enterprise
 # Disable memory check for small home labs
 openshift_disable_check: memory_availability
 
+# Red Hat recommends firewalld instead of iptables
+os_firewall_use_firewalld: true
+
 # Install OpenShift templates and service catalog by default
 openshift_install_examples: true
 openshift_enable_service_catalog: true
 
-# Install metrics
-openshift_metrics_install_metrics: true
-openshift_metrics_hawkular_hostname: 'hawkular-metrics.{{ openshift_master_default_subdomain }}'
-
-# Install logging
-openshift_logging_install_logging: true
-openshift_logging_es_nodeselector: 'node-role.kubernetes.io/infra=true'
+# https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html/installing_clusters/install-config-configuring-inventory-file
+openshift_node_groups:
+  - name: node-config-master
+    labels:
+      - 'node-role.kubernetes.io/master=true'
+    edits: []
+  - name: node-config-infra
+    labels:
+      - 'node-role.kubernetes.io/infra=true'
+    edits: []
+  - name: node-config-compute
+    labels:
+      - 'node-role.kubernetes.io/compute=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
