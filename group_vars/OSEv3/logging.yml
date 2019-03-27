@@ -1,0 +1,3 @@
+# Install logging
+openshift_logging_install_logging: true
+openshift_logging_es_nodeselector: {"node-role.kubernetes.io/infra":"true"}

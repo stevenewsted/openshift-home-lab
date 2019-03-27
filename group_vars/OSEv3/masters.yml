@@ -1,0 +1,7 @@
+# Master configurations
+openshift_master_cluster_method: native
+openshift_master_identity_providers:
+  - name: htpasswd_auth
+    login: true
+    challenge: true
+    kind: HTPasswdPasswordIdentityProvider
