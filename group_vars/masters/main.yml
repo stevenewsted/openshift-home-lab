@@ -1,2 +1,0 @@
-openshift_schedulable: True
-openshift_node_group_name: node-config-master
