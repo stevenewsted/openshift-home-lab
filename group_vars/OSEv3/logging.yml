@@ -1,8 +1,10 @@
 # Install logging
 openshift_logging_install_logging: true
 openshift_logging_es_nodeselector: {"node-role.kubernetes.io/infra":"true"}
+openshift_logging_kibana_nodeselector: {"node-role.kubernetes.io/infra":"true"}
+openshift_logging_curator_nodeselector: {"node-role.kubernetes.io/infra":"true"}
 
-# Tuning for small home labs
+# Optional tuning for small home labs
 openshift_logging_es_cpu_limit: 500m
 openshift_logging_es_memory_limit: 1G
 openshift_logging_fluentd_memory_limit: 500M
