@@ -2,9 +2,6 @@
 #
 ### Syntax to run: ansible-playbook -i <inventory> config.yml
 
-# Copy required packages prior to deployment 
-# - include: prep-nodes.yml
-
 # Deploy OpenShift
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
