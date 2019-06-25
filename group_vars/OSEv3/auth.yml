@@ -1,0 +1,10 @@
+# https://docs.openshift.com/container-platform/3.11/install_config/configuring_authentication.html
+
+# Configure htpasswd authentication
+openshift_master_identity_providers:
+  - name: htpasswd_auth
+    login: true
+    challenge: true
+    kind: HTPasswdPasswordIdentityProvider
+# Define htpasswd users file locally on master node
+openshift_master_htpasswd_users: {"admin":"$apr1$S2BW9z31$90mxjme7O/ao8FWuVt9Nt/"}
