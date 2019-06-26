@@ -19,14 +19,46 @@ openshift_node_groups:
   - name: node-config-master
     labels:
       - 'node-role.kubernetes.io/master=true'
-    edits: []
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
   - name: node-config-infra
     labels:
       - 'node-role.kubernetes.io/infra=true'
-    edits: []
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
   - name: node-config-compute
     labels:
       - 'node-role.kubernetes.io/compute=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-master-infra
+    labels:
+      - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-all-in-one
+    labels:
+      - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true,node-role.kubernetes.io/compute=true'
     edits:
       - key: kubeletArguments.image-gc-high-threshold
         value:
