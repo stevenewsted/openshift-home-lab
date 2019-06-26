@@ -1,0 +1,15 @@
+# https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html/cri-o_runtime/use-crio-engine#installing-cri-o-with-a-new-openshift-container-platform-cluster
+
+# Install and run cri-o.
+openshift_use_crio: True
+openshift_use_crio_only: False
+# The following two variables are used when openshift_use_crio is True
+# and cleans up after builds that pass through docker. When openshift_use_crio is True
+# these variables are set to the defaults shown. You may override them here.
+# NOTE: You will still need to tag crio nodes with your given label(s)!
+# Enable docker garbage collection when using cri-o
+openshift_crio_enable_docker_gc: True
+# Node Selectors to run the garbage collection
+openshift_crio_docker_gc_node_selector: {'runtime': 'cri-o'}
+
+
