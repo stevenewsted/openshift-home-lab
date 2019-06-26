@@ -6,16 +6,30 @@
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
 
+# https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html/installing_clusters/install-running-installation-playbooks#advanced-retrying-installation
 # A la carte playbooks to reconfigure infrastructure and install additional components
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-checks/pre-install.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-node/bootstrap.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-etcd/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-nfs/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-loadbalancer/config.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/config.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/additional_config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-node/join.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-glusterfs/config.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-hosted/config.yml
-# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-web-console/config.yml
-# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-node/bootstrap.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-monitoring/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-web-console/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-console/config.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-monitor-availability/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-service-catalog/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-management/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-descheduler/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-node-problem-detector/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-autoheal/config.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/olm/config.yml
 
 # Uninstall OpenShift
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
