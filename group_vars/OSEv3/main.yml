@@ -7,6 +7,11 @@ openshift_deployment_type: openshift-enterprise
 # Disable memory check for small home labs
 openshift_disable_check: memory_availability
 
+# Explicitly set OpenShift package version
+openshift_release: v3.11
+openshift_package_version: 3.11.104
+openshift_pkg_version: -3.11.104
+
 # Red Hat recommends firewalld instead of iptables
 os_firewall_use_firewalld: true
 
