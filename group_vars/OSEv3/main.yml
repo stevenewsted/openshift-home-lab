@@ -5,7 +5,7 @@ ansible_ssh_user: root
 openshift_deployment_type: openshift-enterprise
 
 # Disable memory check for small home labs
-openshift_disable_check: memory_availability
+openshift_disable_check: memory_availability,docker_image_availability
 
 # Red Hat recommends firewalld instead of iptables
 os_firewall_use_firewalld: true
@@ -16,7 +16,7 @@ openshift_enable_service_catalog: true
 
 # https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html/installing_clusters/install-config-configuring-inventory-file
 openshift_node_groups:
-  - name: node-config-master-crio
+  - name: node-config-master
     labels:
       - 'node-role.kubernetes.io/master=true'
     edits:
@@ -26,7 +26,7 @@ openshift_node_groups:
       - key: kubeletArguments.image-gc-low-threshold
         value:
           - "70"
-  - name: node-config-infra-crio
+  - name: node-config-infra
     labels:
       - 'node-role.kubernetes.io/infra=true'
     edits:
@@ -36,7 +36,7 @@ openshift_node_groups:
       - key: kubeletArguments.image-gc-low-threshold
         value:
           - "70"
-  - name: node-config-compute-crio
+  - name: node-config-compute
     labels:
       - 'node-role.kubernetes.io/compute=true'
     edits:
@@ -46,7 +46,7 @@ openshift_node_groups:
       - key: kubeletArguments.image-gc-low-threshold
         value:
           - "70"
-  - name: node-config-master-infra-crio
+  - name: node-config-master-infra
     labels:
       - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true'
     edits:
@@ -56,7 +56,7 @@ openshift_node_groups:
       - key: kubeletArguments.image-gc-low-threshold
         value:
           - "70"
-  - name: node-config-all-in-one-crio
+  - name: node-config-all-in-one
     labels:
       - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true,node-role.kubernetes.io/compute=true'
     edits:
