@@ -1,5 +1,5 @@
 [ocp]
-master1.home.lan
-node1.home.lan
-node2.home.lan
-jump.home.lan
+master1.lab.jomby.net
+node1.lab.jomby.net
+node2.lab.jomby.net
+jump.lab.jomby.net

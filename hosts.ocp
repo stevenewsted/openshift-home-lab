@@ -6,27 +6,21 @@ etcd
 
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
-
+homelab_router_ip=192.168.1.1
+openshift_master_default_subdomain=ocp.lab.jomby.net
 # optional
 # debug_level=4
 
-oreg_auth_user=rhn-support-snewsted
-oreg_auth_password='>_d+*s.!Uak7X3+_'
-
-homelab_router_ip=192.168.5.123
-
-openshift_master_default_subdomain=ocp.home.lan
-
 # host group for masters
 [masters]
-master1.home.lan
+master1.lab.jomby.net
 
 # host group for etcd
 [etcd]
-master1.home.lan
+master1.lab.jomby.net
 
 # host group for nodes
 [nodes]
-master1.home.lan openshift_node_group_name='node-config-master-infra'
-node1.home.lan openshift_node_group_name='node-config-compute'
-node2.home.lan openshift_node_group_name='node-config-compute'
+master1.lab.jomby.net openshift_node_group_name='node-config-master-infra'
+node1.lab.jomby.net openshift_node_group_name='node-config-compute'
+node2.lab.jomby.net openshift_node_group_name='node-config-compute'
