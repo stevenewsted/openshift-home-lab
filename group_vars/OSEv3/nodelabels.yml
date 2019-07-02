@@ -1,0 +1,118 @@
+# Connect to nodes as root user.
+ansible_ssh_user: root
+
+# Set deployment type to deploy enterprise as opposed to origin or a stand-alone registry
+openshift_deployment_type: openshift-enterprise
+
+# Disable memory check for small home labs
+openshift_disable_check: memory_availability
+
+# Red Hat recommends firewalld instead of iptables
+os_firewall_use_firewalld: true
+
+# Install OpenShift templates and service catalog by default
+openshift_install_examples: true
+openshift_enable_service_catalog: true
+
+# https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html/installing_clusters/install-config-configuring-inventory-file
+openshift_node_groups:
+  - name: node-config-master
+    labels:
+      - 'node-role.kubernetes.io/master=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-infra
+    labels:
+      - 'node-role.kubernetes.io/infra=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-compute
+    labels:
+      - 'node-role.kubernetes.io/compute=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-master-infra
+    labels:
+      - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-all-in-one
+    labels:
+      - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true,node-role.kubernetes.io/compute=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-master-crio
+    labels:
+      - 'node-role.kubernetes.io/master=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-infra-crio
+    labels:
+      - 'node-role.kubernetes.io/infra=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-compute-crio
+    labels:
+      - 'node-role.kubernetes.io/compute=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-master-infra-crio
+    labels:
+      - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
+  - name: node-config-all-in-one-crio
+    labels:
+      - 'node-role.kubernetes.io/infra=true,node-role.kubernetes.io/master=true,node-role.kubernetes.io/compute=true'
+    edits:
+      - key: kubeletArguments.image-gc-high-threshold
+        value:
+          - "80"
+      - key: kubeletArguments.image-gc-low-threshold
+        value:
+          - "70"
