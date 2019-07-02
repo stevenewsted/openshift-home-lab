@@ -41,13 +41,13 @@ There are several host files in this repo. The first one you want to look at is 
 
 ```
 [ocp]
-master0.domain.com
-node0.domain.com
+master0.example.com
+node0.example.com
 ```
 Edit the hosts.jump file to include the FQDN of your new jump host:
 ```
 [jump]
-jump.domain.com
+jump.example.com
 ```
 These instructions assume you are installing a jump VM in addition to a master and node VMs. The install scripts for the jump are separate to allow you to skip the jump server if you choose to.
 
@@ -55,9 +55,9 @@ These instructions assume you are installing a jump VM in addition to a master a
 
 When you look at the `env.sh` file, you'll notice that the MAC addresses are already set up for your VMs. You need to take those MACs and add them to the 
 
-  - DOMAIN - the domain name to use for the hosts (ie: domain.com)
+  - DOMAIN - the domain name to use for the hosts (ie: example.com)
   - MACADDRESS - MAC addresses for your VMs (be unique)
-  - OCPDOMAIN - the domain name for the cluster (ie: ocp.ocpdomain.com, \*.apps.ocpdomain.com\)  
+  - OCPDOMAIN - the domain name for the cluster (ie: ocp.ocpexample.com, \*.apps.ocpexample.com\)  
   - WORKSPACE, VMS - where VMs, etc are stored
   - ISOS - where your ISOs can be found
   - RHEL_IMAGE - your rhel-server-7.5-x86_64-kvm.qcow2 image
@@ -74,7 +74,7 @@ You can use public DNS like godaddy to host your DNS records; or something inter
         Name:	jump.$DOMAIN
         Address: 192.168.88.99
 
-Your A record for domain.com would be:
+Your A record for example.com would be:
 ```
 Host *           Points to *            TTL
 jump             192.168.88.99          1 hour
@@ -200,7 +200,7 @@ Change `openshift_master_default_subdomain` to the OCPDOMAIN you specified in th
 *   `1-create-jump.sh` -- ditto for jump server
 *   `2-build.sh` -- Install VMs and attach disks
 *   `2-build-jump.sh` -- Install jump VM and attach disk
-*   `start-all.sh` -- boot them up /  `$ virsh start jump.domain.com`
+*   `start-all.sh` -- boot them up /  `$ virsh start jump.example.com`
 *   `3-keys.sh` -- push ssh keys around
 *   `4-prep.sh` -- update the VMs with required packages, etc -- this step takes a while
 *   `4-prep-jump.sh` -- update the VMs with required packages, etc
@@ -233,7 +233,7 @@ Good luck!
 # Troubleshooting notes
 
 ## SSH Keys
-If you run into the `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!` message, use `ssh-keygen -R node.domain.com` for each host. Then you need to ssh into them again to add them to the `known_hosts` file. This shouldn't come up often though, as the `kill-all.sh` script should be removing them automatically.
+If you run into the `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!` message, use `ssh-keygen -R node.example.com` for each host. Then you need to ssh into them again to add them to the `known_hosts` file. This shouldn't come up often though, as the `kill-all.sh` script should be removing them automatically.
 
 May need to scp ssh keys and/or ssh into the other nodes from the jump node to make sure the `known_hosts` file is updated.
 
