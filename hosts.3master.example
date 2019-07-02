@@ -1,0 +1,35 @@
+# Create an OSEv3 group that contains the masters and nodes groups
+[OSEv3:children]
+masters
+nodes
+lb
+etcd
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+
+openshift_master_cluster_hostname=ocp.example.com
+openshift_master_cluster_public_hostname=ocp.example.com
+openshift_master_default_subdomain=apps.example.com
+
+# enable ntp on masters to ensure proper failover
+openshift_clock_enabled=true
+
+# host group for masters
+[masters]
+master1.example.com
+master2.example.com
+master3.example.com
+
+# host group for nodes, includes region info
+[nodes]
+node1.example.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
+node2.example.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
+
+[lb]
+node1.example.com
+
+[etcd]
+master1.example.com
+master2.example.com
+master3.example.com

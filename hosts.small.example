@@ -1,0 +1,24 @@
+# Create an OSEv3 group that contains the masters and nodes groups
+[OSEv3:children]
+masters
+nodes
+etcd
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+homelab_router_ip=192.168.1.1
+openshift_master_default_subdomain=ocp.example.com
+
+# host group for masters
+[masters]
+master1.example.com
+
+# host group for etcd
+[etcd]
+master1.example.com
+
+# host group for nodes
+[nodes]
+master1.example.com openshift_node_group_name='node-config-master-infra'
+node1.example.com openshift_node_group_name='node-config-compute'
+node2.example.com openshift_node_group_name='node-config-compute'

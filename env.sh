@@ -1,12 +1,12 @@
 # See README.md
-export DOMAIN="lab.jomby.net"
+export DOMAIN="example.com"
 declare -A MACADDRESS=( \
         ["jump."$DOMAIN]="52:54:00:42:B4:AD" \
      ["master1."$DOMAIN]="52:54:00:AC:C6:E1" \
        ["node1."$DOMAIN]="52:54:00:4A:22:9B"   \
        ["node2."$DOMAIN]="52:54:00:4A:22:9C"   \
 )
-export OCPDOMAIN="ocp.lab.jomby.net"
+export OCPDOMAIN="ocp.example.com"
 export WORKSPACE="$HOME/ocp"
 export VMS="/vms/ocp/"
 export ORIGINALKEY=$HOME/.ssh/id_rsa.pub

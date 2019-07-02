@@ -5,3 +5,4 @@ typescript
 variables.yml
 vault.yml
 *.swp
+hosts.lab

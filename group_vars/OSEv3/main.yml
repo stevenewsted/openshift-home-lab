@@ -10,6 +10,9 @@ openshift_disable_check: memory_availability
 # Red Hat recommends firewalld instead of iptables
 os_firewall_use_firewalld: true
 
+# Master configurations
+openshift_master_cluster_method: native
+
 # Install OpenShift templates and service catalog by default
 openshift_install_examples: true
 openshift_enable_service_catalog: true

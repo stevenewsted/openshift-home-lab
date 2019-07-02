@@ -1,5 +1,5 @@
 [ocp]
-master1.lab.jomby.net
-node1.lab.jomby.net
-node2.lab.jomby.net
-jump.lab.jomby.net
+master1.example.com
+node1.example.com
+node2.example.com
+jump.example.com
