@@ -6,7 +6,6 @@ etcd
 
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
-homelab_router_ip=192.168.1.1
 openshift_master_default_subdomain=ocp.example.com
 
 # host group for masters

@@ -1,0 +1,6 @@
+- name: Configure dnsmasq to use wildcard DNS
+  hosts: nodes
+  vars:
+    homelab_router_ip: 192.168.1.1
+  roles:
+    - dnsmasq-wildcard

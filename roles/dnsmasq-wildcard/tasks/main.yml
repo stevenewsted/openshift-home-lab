@@ -1,0 +1,8 @@
+- name: Add wildcard to dnsmasq config on nodes
+  notify: 'restart dnsmasq'
+  template: 
+    src: 'dnsmasq-wildcard.conf.j2'
+    dest: '/etc/dnsmasq.d/dnsmasq-wildcard.conf'
+    mode: 644
+    owner: root
+    group: root
