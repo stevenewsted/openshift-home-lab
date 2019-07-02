@@ -4,9 +4,10 @@ source ./env.sh
 
 echo "copying sample configuration hosts.ocp, hosts and 3-keys.sh to the jumpstation"
 # TODO: this should be updated to use a real jump machine hostname from the list of hosts, and not assume 'jump' is valid
-scp hosts.ocp root@jump.$DOMAIN:~/
-scp hosts     root@jump.$DOMAIN:~/
-scp 3-keys.sh root@jump.$DOMAIN:~/
+#scp hosts.ocp root@jump.$DOMAIN:~/
+#scp hosts     root@jump.$DOMAIN:~/
+#scp 3-keys.sh root@jump.$DOMAIN:~/
+scp -r * root@jump.$DOMAIN:~/
 echo "Now go do these steps:"
 echo " hypervisor$ ssh root@jump.$DOMAIN"
 echo "       jump# ssh-keygen    # accept the defaults"

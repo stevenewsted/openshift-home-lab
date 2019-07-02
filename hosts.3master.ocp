@@ -8,14 +8,14 @@ etcd
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
 openshift_hosted_metrics_deploy=false
-openshift_release=v3.6
+openshift_release=v3.11
 
 # If ansible_ssh_user is not root, ansible_become must be set to true
 #ansible_become=true
 
-openshift_master_cluster_hostname=ocp.nozell.com
-openshift_master_cluster_public_hostname=ocp.nozell.com
-openshift_master_default_subdomain=apps.nozell.com
+openshift_master_cluster_hostname=ocp.lab.jomby.net
+openshift_master_cluster_public_hostname=ocp.lab.jomby.net
+openshift_master_default_subdomain=apps.lab.jomby.net
 
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
@@ -26,21 +26,15 @@ openshift_master_cluster_method=native
 
 # host group for masters
 [masters]
-master0.gwiki.org
-master1.gwiki.org
-master2.gwiki.org
+master1.lab.jomby.net
 
 # host group for nodes, includes region info
 [nodes]
-master0.gwiki.org openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
-master1.gwiki.org openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
-master2.gwiki.org openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
-node0.gwiki.org openshift_node_labels="{'region': 'primary', 'zone': 'east'}" openshift_schedulable=true
+node1.lab.jomby.net openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
+node2.lab.jomby.net openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
 
 [lb]
-node1.gwiki.org
+node1.lab.jomby.net
 
 [etcd]
-master0.gwiki.org
-master1.gwiki.org
-master2.gwiki.org
+master1.lab.jomby.net
