@@ -31,5 +31,8 @@
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-autoheal/config.yml
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/olm/config.yml
 
+# Upgrade OpenShift
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_11/upgrade.yml
+
 # Uninstall OpenShift
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
