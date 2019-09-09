@@ -1,4 +1,5 @@
 # Install logging
+# https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html/installing_clusters/install-config-configuring-inventory-file#advanced-install-cluster-logging
 openshift_logging_install_logging: true
 openshift_logging_es_nodeselector: {"node-role.kubernetes.io/infra":"true"}
 openshift_logging_kibana_nodeselector: {"node-role.kubernetes.io/infra":"true"}
