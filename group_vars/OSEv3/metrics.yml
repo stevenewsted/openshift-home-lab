@@ -1,4 +1,5 @@
 # Install metrics
+# https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html/installing_clusters/install-config-configuring-inventory-file#advanced-install-cluster-metrics
 openshift_metrics_install_metrics: true
 openshift_metrics_cassandra_nodeselector: {"node-role.kubernetes.io/infra":"true"}
 openshift_metrics_hawkular_nodeselector: {"node-role.kubernetes.io/infra":"true"}
