@@ -34,5 +34,9 @@
 # Upgrade OpenShift
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_11/upgrade.yml
 
+# Redeploy certificates
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/redeploy-openshift-ca.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/redeploy-certificates.yml
+
 # Uninstall OpenShift
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
