@@ -36,7 +36,8 @@
 
 # Redeploy certificates
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/redeploy-openshift-ca.yml
-# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-master/redeploy-certificates.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/redeploy-certificates.yml
+# - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-checks/certificate_expiry/easy-mode.yaml
 
 # Uninstall OpenShift
 # - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/adhoc/uninstall.yml
